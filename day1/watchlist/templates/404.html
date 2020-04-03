@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name.title}}'father'</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+</head>
+<body>
+    
+<h2><img src="{{url_for('static',filename='img/lazar.jpg')}}" alt="头像" class="avatar">
+    {{name.name}}</h2>
+
+    <ul>
+        <li>
+            页面走丢了404
+                <a href="{{url_for('index')}}"></a>
+        </li>
+    </ul>
+    <footer>
+        <small>&copy;2020   <a href="#">1903c</a></small>
+    </footer>
+</body>
+</html>
