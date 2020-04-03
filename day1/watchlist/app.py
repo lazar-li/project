@@ -37,10 +37,10 @@ class Movie(db.Model):
 
 def index1():
 
-    user = User.query.first()
+    # user = User.query.first()
     movies = Movie.query.all()
 
-    return render_template('index.html',name=user,movies=movies)
+    return render_template('index.html',movies=movies)
 
 
 #自定义命令
@@ -55,11 +55,7 @@ def initdb(drop):
     click.echo("初始化数据库完成")
 
 
-
-
 #向空数据种插入数据
-
-
 @app.cli.command()
 def forge():
     name = "lazar"
@@ -80,7 +76,17 @@ def forge():
 #404 报错信息
 @app.errorhandler(404)
 def page_not_found(e):
+    # user = User.query.first()
+    return render_template('404.html')
+
+
+
+
+
+#模板上下文处理的函数
+@app.context_processor
+def common_user():
     user = User.query.first()
-    return render_template('404.html',name=user)
+    return dict(name=user)
 if __name__ == '__main__':
     app.run(debug=True)
