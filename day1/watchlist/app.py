@@ -36,15 +36,11 @@ class Movie(db.Model):
 @app.route('/')
 
 def index1():
-    name = "lazar"
-    movies = [
-        {"title":"大赢家","year":"2020.12.29"},
-        {"title":"复仇者联盟","year":"2020.12.29"},
-        {"title":"疯狂外星人","year":"2019"},
-        {"title":"叶问","year":"2017"},
-    ]
 
-    return render_template('index.html',name=name,movies=movies)
+    user = User.query.first()
+    movies = Movie.query.all()
+
+    return render_template('index.html',name=user,movies=movies)
 
 
 #自定义命令
@@ -59,5 +55,26 @@ def initdb(drop):
     click.echo("初始化数据库完成")
 
 
+
+
+#向空数据种插入数据
+
+
+@app.cli.command()
+def forge():
+    name = "lazar"
+    movies = [
+        {"title":"大赢家","year":"2020.12.29"},
+        {"title":"复仇者联盟","year":"2020.12.29"},
+        {"title":"疯狂外星人","year":"2019"},
+        {"title":"叶问","year":"2017"},
+    ]
+    user = User(name=name)
+    db.session.add(user)
+    for m in movies:
+        movies = Movie(title=m['title'],year=m['year'])
+        db.session.add(movies)
+    db.session.commit()
+    click.echo("导入数据完成")
 if __name__ == '__main__':
     app.run(debug=True)
