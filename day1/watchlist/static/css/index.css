@@ -73,3 +73,35 @@ nav li a:hover{
     border-radius: 5px;
     padding: 3px 5px;
 }
+
+.btn{
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 1px solid #555555;
+    border-radius: 5px;
+
+}
+.btn:hover{
+    text-decoration: none;
+    background-color: blue;
+    border: 1px solid #555555;
+    border-radius: 5px;
+}
+
+
+
+
+.alert{
+    position: relative;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid springgreen;
+    color:blue;
+    background-color: teal;
+    border-color: sandybrown;
+    border-radius: 5px;
+}

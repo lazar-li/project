@@ -1,7 +1,7 @@
 #系统库
 import os,sys
 import click
-from flask import Flask,url_for,render_template
+from flask import Flask,url_for,render_template,request,flash,redirect
 from flask_sqlalchemy import SQLAlchemy
 #用来测试  是不是win的系统
 WIN = sys.platform.startswith('win')
@@ -16,6 +16,7 @@ app = Flask(__name__)
 #用来配置数据库
 app.config['SQLALCHEMY_DATABASE_URI'] = prefix+os.path.join(app.root_path,'date.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = '1903_dev'
 
 db = SQLAlchemy(app=app)
 
@@ -33,11 +34,24 @@ class Movie(db.Model):
     title = db.Column(db.String(60))
     year = db.Column(db.String(4))
 #------------------------------------------------------------------------------------------clear
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 
 def index1():
+    if request.method.lower() == "post":
+        title = request.form.get('title')
+        year = request.form.get("year")
 
-    # user = User.query.first()
+        #验证数据
+        if not title or not year or len(year)>4 or len(title)>60:
+            flash('输入错误')
+            #重定向
+            return redirect(url_for('index1'))
+            #将数据保存到数据库
+        movie = Movie(title=title,year=year)
+        db.session.add(movie)
+        db.session.commit()
+        flash("创建成功")
+        return redirect(url_for('index1'))
     movies = Movie.query.all()
 
     return render_template('index.html',movies=movies)

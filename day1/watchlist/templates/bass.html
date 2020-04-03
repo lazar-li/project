@@ -14,6 +14,9 @@
     <img src="{{url_for('static',filename='img/lazar.jpg')}}" alt="头像" class="avatar">
     {{name.name}}
 </h2>
+{%for message in get_flashed_messages()%}
+<div class="alert"> {{message}}</div>
+{%endfor%}
 <nav>
     <ul>
         <li>
