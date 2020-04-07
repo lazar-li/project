@@ -3,6 +3,7 @@ import os,sys
 import click
 from flask import Flask,url_for,render_template,request,flash,redirect
 from flask_sqlalchemy import SQLAlchemy
+
 #用来测试  是不是win的系统
 WIN = sys.platform.startswith('win')
 if WIN:
@@ -102,5 +103,9 @@ def page_not_found(e):
 def common_user():
     user = User.query.first()
     return dict(name=user)
+
+
+
+    
 if __name__ == '__main__':
     app.run(debug=True)
