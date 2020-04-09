@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>传统购物车</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container{
+            width: 40%;
+            margin: 100px auto;
+        }
+        .removed{
+            color: blue;
+        }
+        .removed label{
+            text-decoration: line-through;
+        }
+
+        ul{
+
+            border: 1px salmon solid;
+            margin-top: 30px;
+        }
+
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>我的购物车清单</h2>
+        <div class="input-group">
+            <input class="js-new-item form-control" type="text" placeholder="输入你想购买的物品">
+            <span class="input-group-btn">
+                <button type="button" class="js-add btn btn-default">添加购物车</button>
+            </span>
+        </div>
+        <ul>
+            <li>
+                <div class="checkbox">
+                    <label for="">
+                        <input class="js-item" type="checkbox">肌肉
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="checkbox">
+                    <label for="">
+                        <input class="js-item" type="checkbox">増肌粉
+                    </label>
+                </div>
+            </li>
+            <li>
+                <div class="removed">
+                    <label for="">
+                        <input class="js-item" type="checkbox">碳棒
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    //加载完所有页面的东西然后在处理的script代码
+    $(document).ready(function(){
+        function onAdd(){
+            var $ul,$li,$label,$div,$value
+            value = $('.js-new-item').val();
+            if(value===''){
+                return;
+            }
+            //获取 ul
+            $ul = $('ul')  
+            //获取 创建一个li  然后追加道  ul  里面
+            $li = $('<li>').appendTo($ul)
+            //获取div
+            $div = $('<div>').addClass('checkbox').appendTo($li)
+            // 获取无需列表
+            $label =$("<label>").appendTo($div) 
+            //获取input  框  然后   attr  是代表属性的
+            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label)
+            //获取的是输入框的内容
+
+            $label.append(value)
+            $('.js-new-item').val('');
+        }
+
+        $(".js-add").click(onAdd)
+
+    })
+
+</script>
+</html>

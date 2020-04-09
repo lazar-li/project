@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前段html，css，javascript 体验demo</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            color: #000;
+            font-size: 50px;
+            border: 3px solid rebeccapurple;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="box" id="box">
+        lazar
+    </div>
+    <div class="container" id="container">1900</div>
+</body>
+<script>
+    
+    //第一部先获取html 元素  弹框
+    var oBox = document.getElementById('box')
+
+    //第二部添加点击事件
+    oBox.onclick = function(){
+        alert('你真帅')
+        
+    }
+
+</script>
+
+</html>
