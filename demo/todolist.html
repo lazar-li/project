@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <h2>
+            <span>倒计时</span>
+            <button v-on:click="start()">
+                    <i class="glyphicon glyphicon-play"></i>
+            </button>
+        </h2>
+        <h3>{{WROK_STATES}}</h3>
+        <div class="well">
+            <div class="dao-timer">
+                <span>{{minute}}</span>:<span>{{second}}</span> 
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    //ES6自定义常量  const
+    //WROK_STATUS 是工作的状态
+    const WROK_STATES = {
+        WORK: "工作。。。",
+        REST: "休息。。。"
+    }
+    const WORKING_TIME = 25
+    const RESTING_TIME = 5
+    new Vue({
+        el:"#app",
+        data:{
+            minute:WORKING_TIME,
+            second:0,
+            //工作状态
+            workState:WROK_STATES.WORK,
+            //时间戳
+            timestamp:0
+
+        },
+        methods:{   
+            start:function(){
+                this.itck()
+                this.interval = setInterval(this.tick,1000);
+            },
+            tick:function(){
+                
+                //second不是0的情况   second  -1就行
+                    if(this.second !==0){
+                        this.second--;
+                        return
+                    }
+                //second 是0的话    minute不是0   minute-1  second从0换到59
+                    if (this.minute!==0){
+                        this.minute--;
+                        this.second = 59;
+                        return;
+                    }
+                    //second是0 minute 也是0  切换工作状态 ,切换倒计时间
+                    this.workState=this.workState === WROK_STATES.WORK?WROK_STATES.REST:WROK_STATES.WORK
+                    if (this.workState===WROK_STATES.WORK){
+                        this.minute = WORKING_TIME
+                    }
+                    else{
+                        this.minute = RESTING_TIME
+                    }
+            }
+        }
+    })
+</script>
+
+
+</html>

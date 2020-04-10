@@ -23,6 +23,9 @@
         ul li {
             list-style: none;
         }
+        .js-change-title{
+
+        }
     </style>
 </head>
 <body>
@@ -52,13 +55,19 @@
                 </div>
             </li>
             <li>
-                <div class="removed">
+                <div class="checkbox">
                     <label for="">
                         <input class="js-item" type="checkbox"> 电脑
                     </label>
                 </div>
             </li>
         </ul>
+        <!--修改标题 这个div     hr 用来  表示航线-->  
+        <div class="footer">
+            <hr>
+            <span>用来改变你的标题</span>
+            <input type="text" class="js-change-title" value="我的购物车清单">
+        </div>
     </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
@@ -84,15 +93,33 @@
             $div = $('<div>').addClass('checkbox').appendTo($li)
             //最后一层获取无序列表  添加 在div 里面
             $label = $('<label>').appendTo($div)
-            ////获取input框  添加道label  米面  添加个class js-item  然后   attr  是代表属性的('type','checkbox')  也就是等于  type=”checkbox“
-            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label)
+            //获取input框  添加道label  米面  添加个class js-item  然后   attr  是代表属性的('type','checkbox')  也就是等于  type=”checkbox“
+            //  最后再给 生成出来的li  添加一格点击事件
+            $('<input>').addClass('js-item').attr('type','checkbox').appendTo($label).click(toggleRemoved)
             //获取下输入框   里面的内容 添加道  label 里面
             $label.append(value)
             //最后在把  输入框里面的内容清空了
             $('.js-new-item').val('');
         }
+        //用ev 来表示事件发生的对象
+        function toggleRemoved(ev){
+            //closest  是用来便利的    便利谁需要  便利 父级别   toggleClass 用来来回的切换
+            $(ev.currentTarget).closest('li').toggleClass('removed')
+        }
+
+        //--------------------第三个点击事件---------------------------------
+        //text  就是当前标签里的文本内容
+        //val是你获取的当前标签的 里面的内容
+        function onChangeTitle(){ 
+            $('h2').text($(".js-change-title").val())
+        }
+
         //形成了一个点击事件  .js-add 是点击添加购物车的CLass  click 点击 外部函数 onAdd
         $(".js-add").click(onAdd)
+        //新定义个  用来去除下划线说呢么的
+        $(".js-item").click(toggleRemoved)
+        //出发一个事件  实施 删除或者修改随时增加
+        $(".js-change-title").keyup(onChangeTitle)
     })
 </script>
 </html>
