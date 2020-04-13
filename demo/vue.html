@@ -42,17 +42,25 @@
             <span>改变你的标题</span>
             <change-title-component></change-title-component>
         </div>
+
+        <hr>
+        <div>{{ item }}平方是 <span v-square='item'></span> </div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
+    // 自定义指令square，v-square
+    Vue.directive('square', function (el, binding) {
+        el.innerHTML = Math.pow(binding.value,2)
+    })
     var data = {
         items: [
             {text:'苹果',checked:true},
             {text:'电脑',checked:true}
         ],
         title: "我的购物车",
-        newItem:''
+        newItem:'',
+        item:10
     }
     // 创建列表组件
     var ItemsComponents = Vue.extend({
@@ -60,7 +68,7 @@
             return data;
         },
         template:'<ul>'+
-        '           <li v-for="item in items">'+
+        '           <li v-for="item in items" v-bind:class="{removed:item.checked }">'+
         '             <div class="checkbox">'+
         '               <label for="">'+
         '                 <input type="checkbox" v-model="item.checked">{{ item.text }}'+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="app">
+        第一个练习渲染出来的东西-->
+        <!-- {{message}} -->
+    <!-- </div> -->
+    <!-- <div id="app-2">
+        <span v-bind:title="message">
+          鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+      </div> -->
+      <!-- <div id ="app">
+          <p v-if="seen">
+              现在你看到我了
+          </p>
+          <p v-if="seen1">
+            看不到我哦
+        </p>
+      </div> -->
+      <div id="app">
+          <ol>
+              <li v-for="todo in todos">
+
+              </li>
+          </ol>
+      </div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>    
+// //  简洁的模板语法来声明式地将数据渲染进 DOM 的系统：
+// var app = new Vue({
+//   el: '#app',
+//   data: {
+//     message: 'Hello Vue!'
+//   }
+// })
+//第二  练习
+// var app2 = new Vue({
+//   el: '#app-2',
+//   data: {
+//     message: '页面加载于 ' + new Date().toLocaleString()
+//   }
+// })
+
+//那个练习3
+
+// var app = new Vue({
+//     el:'#app',
+//     data:{
+//         //如果世true 的话是先是的   如果false 就会小时
+//         seen:false,
+//         seen1:true
+
+//     }
+// })
+
+
+</script>
+</html> 

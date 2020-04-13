@@ -42,7 +42,6 @@
             workState:WROK_STATES.WORK,
             //时间戳
             timestamp:0
-
         },
         methods:{   
             start:function(){
@@ -50,7 +49,6 @@
                 this.interval = setInterval(this.tick,1000);
             },
             tick:function(){
-                
                 //second不是0的情况   second  -1就行
                     if(this.second !==0){
                         this.second--;
@@ -73,6 +71,7 @@
             }
         }
     })
+  
 </script>
 
 
