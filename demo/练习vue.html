@@ -27,7 +27,7 @@
       <div id="app">
           <ol>
               <li v-for="todo in todos">
-
+                    {{ todo.text}}
               </li>
           </ol>
       </div>
@@ -59,7 +59,17 @@
 
 //     }
 // })
-
+//练习4
+var app = new Vue({
+    el:'#app',
+    data : {
+        todos:[
+            {text:'学习 javaScript'},
+            {text:'学习 Vue'},
+            {text:'学习 整个牛项目'}
+        ]
+    }
+})
 
 </script>
 </html> 
