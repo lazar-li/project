@@ -2,7 +2,7 @@
   <div id="app">
     <div class="app-head">
       <div class="app-head-inner">
-        <img src="./assets/logo.png" alt="">
+        <img src="./assets/logo.png" alt=""><span class="app-title">3c产品商城</span>
         <div class="head-nav">
           <ul class="nav-list">
             <li>登录</li>
@@ -51,6 +51,12 @@ export default {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+  }
+  .app-title{
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bolder;
+    margin-left: 30px;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
