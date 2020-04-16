@@ -31,6 +31,7 @@ export default {
 
 // 全局样式<style></style>,非全局样式<style scoped></style>
 <style>
+
   /* reset样式 */
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
