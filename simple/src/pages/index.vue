@@ -91,10 +91,11 @@ export default {
 </script>
 
 <style scoped>
-body{
+*{
   background: #f0f2f5;
   font-size: 14px;
   color: #444;
+  text-decoration: none;
 }
 .index-wrapper {
   width: 1200px;
