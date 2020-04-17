@@ -5,7 +5,7 @@
         <img src="./assets/logo.png" alt=""><span class="app-title">3c产品商城</span>
         <div class="head-nav">
           <ul class="nav-list">
-            <li>登录</li>
+            <li v-on:click="showLogin">登录</li>
             <li class="nav-pile">|</li>
             <li>注册</li>
             <li class="nav-pile">|</li>
@@ -20,16 +20,30 @@
     <div class="app-footer">
     <p>&copy;1903c - 2020</p>
     </div>
+    <my-login v-show="isShowLogin"></my-login>
   </div>
 </template>
 
 <script>
+import MyLogin from './components/myLogin'
 export default {
-
+  components:{
+    MyLogin
+  },
+  data() {
+    return {
+      isShowLogin:false
+    }
+  },
+  methods: {
+    showLogin(){
+      this.isShowLogin = true
+    }
+  },
 }
 </script>
-
-// 全局样式<style></style>,非全局样式<style scoped></style>
+<!---->
+//全局样式<style></style>,非全局样式<style scoped></style>
 <style>
 
   /* reset样式 */
@@ -119,6 +133,7 @@ export default {
   }
   .app-content{
     width: 1200px;
-    margin: 0;
+    margin: 0 0 0 200px;
+    
   }
 </style>
